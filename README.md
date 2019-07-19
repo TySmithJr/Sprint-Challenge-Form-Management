@@ -93,3 +93,4 @@ and the response object will look like this:
 1. Make a Login form. Compuse your Formik form in such a way that it can be extracted into a component and reused for both Register and Login.
 
 1. Deep dive into validation. Can you make your register form check to see if a password is long enough? If it has special characters? Make two password fields for register and prevent the post request if the passwords don't match.
+
