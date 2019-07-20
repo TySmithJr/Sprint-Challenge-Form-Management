@@ -36,8 +36,11 @@ const formikRegForm = withFormik({
         axios 
         .post("http://localhost:5000/api/register", values)
         .then(res =>{
+          
+            localStorage.setItem("token", res.data.token);
             alert("User created successfully", res.data.username)
             console.log(res.data);
+            formikBag.resetForm();
         }) 
         .catch(err => {
             console.log(err);
