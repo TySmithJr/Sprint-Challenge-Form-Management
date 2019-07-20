@@ -3,9 +3,10 @@ import { withFormik, Form, Field,} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-function RegForm({touched, errors, values}) {
+function Login({touched, errors, values}) {
     return (
         <Form>
+            <h1>Login</h1>
             <div>
                 <Field type="text" name="username" placeholder="enter username" value={values.username} />
                 {touched.name && errors.name && <p>{errors.name}</p>}
@@ -32,12 +33,15 @@ const formikRegForm = withFormik({
         };
     }, 
 
-    handleSubmit(values) {
+    handleSubmit(values, formikBag) {
         axios 
-        .post("http://localhost:5000/api/register", values)
+        .post("http://localhost:5000/api/login", values)
         .then(res =>{
+          
+            localStorage.setItem("token", res.data.token);
             alert("User created successfully", res.data.username)
             console.log(res.data);
+            formikBag.props.history.push("/Data")
         }) 
         .catch(err => {
             console.log(err);
@@ -54,7 +58,7 @@ const formikRegForm = withFormik({
          .required("password is required"),
     })
 
-})(RegForm);
+})(Login);
 
 
 
