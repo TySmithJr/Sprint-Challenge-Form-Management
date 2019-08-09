@@ -1,5 +1,5 @@
 import React from 'react';
-import {withFormik, Form, Field} from "formik";
+import {withFormik, Form, formikBag, Field} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
@@ -33,7 +33,7 @@ const formikRegForm = withFormik({
         };
     },
 
-    handleSubmit(values) {
+    handleSubmit(values, {formikBag}) {
         axios
         .post("http://localhost:5000/api/register", values)
         .then(res =>{
@@ -56,4 +56,6 @@ const formikRegForm = withFormik({
 
 
 }) (RegForm);
+
+export default RegForm;
 
