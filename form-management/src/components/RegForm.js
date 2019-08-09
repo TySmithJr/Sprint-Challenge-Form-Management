@@ -32,8 +32,19 @@ const formikRegForm = withFormik({
             password: password || ""
         };
     },
-}
 
-)
+    handleSubmit(values) {
+        axios
+        .post("http://localhost:5000/api/register", values)
+        .then(res =>{
+            localStorage.setItem("token",res.data.token);
+            alert("User created succeessfully", res.data.username)
+            console.log(res.data);
+            formikBag.resetForm();
+        })
+    },
+
+
+})
 
 export default RegForm;
