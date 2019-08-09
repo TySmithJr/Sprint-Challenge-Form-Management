@@ -44,7 +44,16 @@ const formikRegForm = withFormik({
         })
     },
 
+    validationSchema: Yup.object().shape({
+        username: Yup.string()
+            .min(2,"username must have atleast 2 charachters")
+            .required("name is required"),
+        password: Yup.string()
+            .min(8,"password must be 8 charachters")
+            .required("password is required"),
 
-})
+    })
 
-export default RegForm;
+
+}) (RegForm);
+
