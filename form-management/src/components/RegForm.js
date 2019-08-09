@@ -25,4 +25,15 @@ function RegForm({touched,errors,values}) {
     );
 };
 
+const formikRegForm = withFormik({
+    mapPropsToValues({username,password}) {
+        return {
+            username: username || "",
+            password: password || ""
+        };
+    },
+}
+
+)
+
 export default RegForm;
